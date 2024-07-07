@@ -7,13 +7,6 @@ const HomePage: FC = () => {
   return (
     <>
       <Header />
-      <div
-        style={{
-          backgroundImage: `url(Colorful-abstract-picture-paint-texture_3840x2160.jpg)`,
-        }}
-        className={s.bg}
-      />
-      <div className={s.darkBg} />
       <div className={s.container}>
         <h1>
           Daily Tracker - Планируйте свой день, и доби- вайтесь целей с помощью

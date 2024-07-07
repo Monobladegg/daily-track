@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Daily Track',
-  description: 'Твой дневной трекер',
+  description: 'Треккер твоей жизни!',
 }
 
 export default function Home() {
