@@ -10,7 +10,7 @@ const HomePage: FC = () => {
       <div className={s.container}>
         <h1>
           Daily Tracker - Планируйте свой день, и доби- вайтесь целей с помощью
-          нашего сайта!
+          моего сайта!
         </h1>
 
         <section>

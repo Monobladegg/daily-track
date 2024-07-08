@@ -1,16 +1,27 @@
 import { Nunito } from "next/font/google";
+import s from "./layout.module.scss";
+import { Metadata } from "next";
+import Head from "next/head";
 import "./globals.scss";
-import s from "./globals.module.scss";
+
+export const metadata: Metadata = {
+  title: "Daily Track",
+  description: "Daily Track",
+  keywords: ["Daily Track", "Daily", "Track"],
+};
 
 const NunitoFont = Nunito({ subsets: ["latin"] });
 
 interface props {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
-export default function RootLayout({ children }: props) {
+const Layout = ({ children }: props) => {
   return (
     <html lang="en">
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <body className={NunitoFont.className}>
         <div
           style={{
@@ -24,3 +35,5 @@ export default function RootLayout({ children }: props) {
     </html>
   );
 }
+
+export default Layout
