@@ -1,9 +1,24 @@
-import React, { FC } from "react";
+"use client";
+
+import React, { FC, useEffect } from "react";
 import Link from "next/link";
 import s from "./index.module.scss";
 import { Header } from "@/widgets";
+import { useStore } from "@/shared/store";
+import { useShallow } from "zustand/react/shallow";
 
 const HomePage: FC = () => {
+
+  const {isAuth, setIsAuth} = useStore(useShallow((state) => ({
+    isAuth: state.isAuth,
+    setIsAuth: state.setIsAuth
+  })))
+
+  useEffect(() => {
+    if (localStorage.getItem('token') && !isAuth) setIsAuth(true)
+    if (!localStorage.getItem('token') && isAuth) setIsAuth(false)
+  }, []);
+
   return (
     <>
       <Header />

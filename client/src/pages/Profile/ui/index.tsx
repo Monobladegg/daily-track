@@ -1,8 +1,11 @@
 import React, { FC } from 'react'
+import s from './index.module.scss'
 
 const ProfilePage: FC = () => {
   return (
-    <div>Profile</div>
+    <div className={s.container}>
+      
+    </div>
   )
 }
 

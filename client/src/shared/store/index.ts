@@ -1,20 +1,16 @@
 import { create } from "zustand";
 
-import { createAuthSlice } from "./slices";
+import { authSlice } from "./slices";
 import { devtools, persist, subscribeWithSelector } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
+import { Store } from "@/shared/lib/types";
 
-export const useStore = create()(
+export const useStore = create<Store>()(
   devtools(
-    persist(
-      subscribeWithSelector(
-        immer((...a) => ({
-          ...createAuthSlice(...a),
-        }))
-      ),
-      {
-        name: "local-storage",
-      }
+    subscribeWithSelector(
+      immer((...a) => ({
+        ...authSlice(...a),
+      }))
     )
   )
 );

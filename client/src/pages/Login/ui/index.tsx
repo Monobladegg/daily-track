@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import s from "./index.module.scss";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
@@ -11,8 +11,21 @@ import {
 import { BackLink } from "@/widgets";
 import { ILoginForm } from "@/shared/lib/types";
 import { authAPI } from "@/shared/lib/api/api";
+import { useStore } from "@/shared/store";
+import { useShallow } from "zustand/react/shallow";
 
 const LoginPage: FC = () => {
+
+  useEffect(() => {
+    const isAuth = localStorage.getItem("token");
+    isAuth && (window.location.href = "/")
+  }, []);
+
+  const { isAuth, setIsAuth } = useStore(useShallow((state) => ({
+    isAuth: state.isAuth,
+    setIsAuth: state.setIsAuth,
+  })));
+
   const [showPassword, setShowPassword] = useState(false);
 
   const { handleSubmit, control } = useForm<ILoginForm>({
@@ -34,13 +47,13 @@ const LoginPage: FC = () => {
           console.log(response);
 
           if (response.status === 200) {
+            setIsAuth(true);
             window.location.href = "/";
-          } else {
-            alert("Неверный логин или пароль");
           }
         })
         .catch((e) => {
           console.log(e);
+          alert("Неверная почта или пароль");
         });
     } catch (e) {
       console.log(e);

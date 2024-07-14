@@ -1,8 +1,6 @@
-import { Nunito } from "next/font/google";
-import s from "./layout.module.scss";
 import { Metadata } from "next";
-import Head from "next/head";
 import "./globals.scss";
+import LayoutPage from "@/pages/Layout";
 
 export const metadata: Metadata = {
   title: "Daily Track",
@@ -10,30 +8,12 @@ export const metadata: Metadata = {
   keywords: ["Daily Track", "Daily", "Track"],
 };
 
-const NunitoFont = Nunito({ subsets: ["latin"] });
-
 interface props {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 const Layout = ({ children }: props) => {
-  return (
-    <html lang="en">
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <body className={NunitoFont.className}>
-        <div
-          style={{
-            backgroundImage: `url(Colorful-abstract-picture-paint-texture_3840x2160.jpg)`,
-          }}
-          className={s.bg}
-        />
-        <div className={s.darkBg} />
-        {children}
-      </body>
-    </html>
-  );
-}
+  return <LayoutPage>{children}</LayoutPage>;
+};
 
-export default Layout
+export default Layout;

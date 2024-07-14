@@ -3,12 +3,6 @@ import s from "./index.module.scss";
 import { Metadata } from "next";
 import Head from "next/head";
 
-export const metadata: Metadata = {
-  title: "Daily Track",
-  description: "Daily Track",
-  keywords: ["Daily Track", "Daily", "Track"],
-};
-
 const NunitoFont = Nunito({ subsets: ["latin"] });
 
 interface props {
@@ -16,6 +10,7 @@ interface props {
 }
 
 const Layout = ({ children }: props) => {
+
   return (
     <html lang="en">
       <Head>
