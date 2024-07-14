@@ -9,14 +9,9 @@ import {
   emailValidation,
   passwordValidation,
 } from "@/shared/lib/validations";
-import Link from "next/link";
 import { BackLink } from "@/widgets";
-
-interface IRegisterForm {
-  username: string;
-  email: string;
-  password: string;
-}
+import { IRegisterForm } from "@/shared/lib/types";
+import { authAPI } from "@/shared/lib/api/api";
 
 const RegisterPage: FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,8 +25,28 @@ const RegisterPage: FC = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<IRegisterForm> = (data: IRegisterForm) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<IRegisterForm> = async ({
+    username,
+    email,
+    password,
+  }: IRegisterForm) => {
+    try {
+      authAPI
+        .register({ username, email, password })
+        .then((response) => {
+          console.log(response);
+          if (response.status === 400) alert("Пользователь с таким email уже существует");
+          if (response.status === 201) {
+            alert(`Вы успешно зарегистрировались! Ваш пароль ${password}, пожалуйста, не забудьте его!`);
+            window.location.href = "/";
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -100,6 +115,7 @@ const RegisterPage: FC = () => {
                 </div>
               )}
             />
+            <p className={s.link}>Есть аккаунт? <a href="/login">Вход</a></p>
             <button type="submit">Зарегистрироваться</button>
           </form>
         </div>

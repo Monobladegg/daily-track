@@ -9,16 +9,13 @@ import {
   passwordValidation,
 } from "@/shared/lib/validations";
 import { BackLink } from "@/widgets";
-
-interface IRegisterForm {
-  email: string;
-  password: string;
-}
+import { ILoginForm } from "@/shared/lib/types";
+import { authAPI } from "@/shared/lib/api/api";
 
 const LoginPage: FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const { handleSubmit, control } = useForm<IRegisterForm>({
+  const { handleSubmit, control } = useForm<ILoginForm>({
     mode: "onChange",
     defaultValues: {
       email: "",
@@ -26,8 +23,28 @@ const LoginPage: FC = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<IRegisterForm> = (data: IRegisterForm) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<ILoginForm> = async ({
+    email,
+    password,
+  }: ILoginForm) => {
+    try {
+      authAPI
+        .login({ email, password })
+        .then((response) => {
+          console.log(response);
+
+          if (response.status === 200) {
+            window.location.href = "/";
+          } else {
+            alert("Неверный логин или пароль");
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (

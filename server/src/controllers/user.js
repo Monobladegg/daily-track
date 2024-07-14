@@ -42,16 +42,14 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   try {
     const user = await UserModel.findOne({ email: req.body.email });
-    if (!user)
-      return res.status(404).json({ message: "Пользователь не найден" });
+    if (!user) return res.status(404).json({ message: "Пользователь не найден" });
 
     const isValidPassword = await bcrypt.compare(
       req.body.password,
       user._doc.passwordHash
     );
 
-    if (!isValidPassword)
-      return res.status(400).json({ message: "Неверный пароль" });
+    if (!isValidPassword) return res.status(400).json({ message: "Неверный пароль" });
 
     const token = jwt.sign(
       {

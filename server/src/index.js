@@ -20,11 +20,14 @@ mongoose
 const app = express()
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+}))
 
-app.post("/auth/register", registrationValidator, handleValidationsErrors, register)
-app.post("/auth/login", loginValidator, handleValidationsErrors, login)
-app.get("/auth/me", checkAuth, getMe)
+app.post("/api/auth/register", registrationValidator, handleValidationsErrors, register)
+app.post("/api/auth/login", loginValidator, handleValidationsErrors, login)
+app.get("/api/auth/me", checkAuth, getMe)
 
 
 app.listen(5000, () => console.log("Server started on port 5000"))
