@@ -1,0 +1,12 @@
+.back {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 24px;
+  font-weight: 100;
+  transition: color 0.14s ease-in-out;
+  top: 10px;
+  left: 10px;
+  &:hover {
+    color: rgb(167, 173, 255);
+  }
+}

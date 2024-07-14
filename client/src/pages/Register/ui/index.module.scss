@@ -1,3 +1,4 @@
+
 .all {
   height: 100vh;
   width: 100vw;
@@ -51,17 +52,19 @@
         color: white;
         font-weight: 100;
         font-size: 24px;
+        transition: border 0.16s ease-in-out, box-shadow 0.16s ease-in-out;
         &::placeholder {
           font-weight: 100;
           color: white;
           opacity: 0.35;
         }
+        &:focus {
+          border-bottom: 1px solid rgb(167, 173, 255);
+          box-shadow: 0 5px 10px -10px rgb(167, 173, 255);
+        }
       }
       div {
         position: relative;
-        input {
-
-        }
         svg {
           position: absolute;
           right: 0;
