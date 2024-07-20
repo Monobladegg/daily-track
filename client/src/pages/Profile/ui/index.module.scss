@@ -1,0 +1,19 @@
+.container {
+  width: 1300px;
+  margin-inline: auto;
+  margin-left: calc(auto - 1px);
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    font-size: 54px;
+    font-weight: 200;
+    margin-bottom: -15px;
+  }
+  p {
+    font-size: 24px;
+    font-weight: 200;
+    opacity: 0.8;
+    margin-left: 2px;
+  }
+}

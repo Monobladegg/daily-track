@@ -5,9 +5,7 @@ const jwt = require("jsonwebtoken");
 const register = async (req, res) => {
   try {
     const existingUser = await UserModel.findOne({ email: req.body.email });
-    if (existingUser) {
-      return res.status(400).json({ message: "Email already in use" });
-    }
+    if (existingUser) return res.status(400).json({ message: "Email already in use" });
 
     const password = req.body.password;
     const salt = bcrypt.genSaltSync(10);

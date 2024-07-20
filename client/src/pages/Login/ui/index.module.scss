@@ -6,6 +6,7 @@
   transition: color 0.14s ease-in-out;
   top: 10px;
   left: 10px;
+
   &:hover {
     color: rgb(167, 173, 255);
   }
@@ -19,29 +20,44 @@
   display: flex;
   justify-content: center;
   gap: 50px;
+
   .left {
     h1 {
       font-size: 54px;
       font-weight: 300;
     }
+
     p {
       font-size: 24px;
       font-weight: 200;
       margin-top: 5px;
     }
   }
+
   .right {
     display: flex;
     flex-direction: column;
     gap: 20px;
+
     h1 {
       font-size: 54px;
       font-weight: 300;
     }
+
     form {
       display: flex;
       flex-direction: column;
       gap: 20px;
+
+      .link {
+        font-weight: 200;
+        font-size: 16px;
+
+        a {
+          text-decoration: underline;
+        }
+      }
+
       button {
         background-color: transparent;
         outline: none;
@@ -52,10 +68,12 @@
         cursor: pointer;
         transition: color 0.16s ease-in-out;
         text-decoration: underline;
+
         &:hover {
           color: rgb(167, 173, 255);
         }
       }
+
       input {
         background-color: transparent;
         outline: none;
@@ -65,18 +83,22 @@
         font-weight: 100;
         font-size: 24px;
         transition: border 0.16s ease-in-out, box-shadow 0.16s ease-in-out;
+
         &::placeholder {
           font-weight: 100;
           color: white;
           opacity: 0.35;
         }
+
         &:focus {
           border-bottom: 1px solid rgb(167, 173, 255);
           box-shadow: 0 5px 10px -10px rgb(167, 173, 255);
         }
       }
+
       div {
         position: relative;
+
         svg {
           position: absolute;
           right: 0;

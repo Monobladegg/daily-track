@@ -9,15 +9,9 @@ import { useShallow } from "zustand/react/shallow";
 
 const HomePage: FC = () => {
 
-  const {isAuth, setIsAuth} = useStore(useShallow((state) => ({
+  const { isAuth } = useStore(useShallow((state) => ({
     isAuth: state.isAuth,
-    setIsAuth: state.setIsAuth
-  })))
-
-  useEffect(() => {
-    if (localStorage.getItem('token') && !isAuth) setIsAuth(true)
-    if (!localStorage.getItem('token') && isAuth) setIsAuth(false)
-  }, []);
+  })));
 
   return (
     <>
@@ -38,7 +32,7 @@ const HomePage: FC = () => {
           <img />
         </section>
 
-        <Link className={s.start} href={"/register"}>
+        <Link className={s.start} href={isAuth ? "/dashboard" : "/register"}>
           <h3 className={s.go}>
             Начните планировать свой первый день прямо сейчас!
           </h3>

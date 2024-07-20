@@ -18,8 +18,7 @@ import { useShallow } from "zustand/react/shallow";
 const RegisterPage: FC = () => {
 
   useEffect(() => {
-    const isAuth = localStorage.getItem("token");
-    isAuth && (window.location.href = "/")
+    isAuth && (window.location.href = "/");
   }, []);
 
   const {isAuth, setIsAuth, setUsername, setEmail} = useStore(useShallow((state) => ({
