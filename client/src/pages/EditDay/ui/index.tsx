@@ -19,18 +19,16 @@ const EditDay = ({ params }: Props) => {
   const [countTargets, setCountTargets] = useState<number>(1);
   const [day, setDay] = useState<string>(params.day);
   const [month, setMonth] = useState<string>(params.month);
-  const [year, setYear] = useState<string>(params.year);
+  const [year] = useState<string>(params.year);
+  
   useEffect(() => {
     if (params.day.length === 1) setDay(`0${params.day}`);
     if (params.month.length === 1) setMonth(`0${params.month}`);
   }, [isSelected]);
 
   const addCount = () => {
-    if (isSelected === 1) {
-      setCountRoutines(countRoutines + 1);
-    } else if (isSelected === 2) {
-      setCountTargets(countTargets + 1);
-    }
+    if (isSelected === 1) setCountRoutines(countRoutines + 1);
+    else if (isSelected === 2) setCountTargets(countTargets + 1);
   };
 
   return (
