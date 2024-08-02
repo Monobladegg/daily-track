@@ -6,7 +6,7 @@ import { Nunito } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Daily Track",
-  description: "Daily Track",
+  description: "By Monoblade",
   keywords: ["Daily Track", "Daily", "Track"],
 };
 

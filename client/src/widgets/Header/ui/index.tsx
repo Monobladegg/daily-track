@@ -21,7 +21,7 @@ const Header: FC = () => {
       <div>
         {isAuth ? (
           <div className={s.links}>
-            <Link href={`/edit-day/${new Date().getFullYear()}/${new Date().getMonth()}/${new Date().getDate()}`}><h3>План на сегодня</h3></Link>
+            <Link href={`/edit-day/${new Date().getFullYear()}/${new Date().getMonth() + 1}/${new Date().getDate()}`}><h3>План на сегодня</h3></Link>
             <Link href={"/dashboard"}><h3>Треккер</h3></Link>
             <Link href={"/profile"}><h3><HiOutlineUserCircle size={32} className={s.icon} /></h3></Link>
           </div>
