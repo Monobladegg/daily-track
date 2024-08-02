@@ -6,25 +6,25 @@ import s from './index.module.scss';
 import { Routine } from "@/widgets";
 
 interface Props {
-  params: {
-    year: string;
-    month: string;
-    day: string;
+  params?: {
+    year?: string;
+    month?: string;
+    day?: string;
   };
 }
 
-const EditDay = ({ params }: Props) => {
+const EditDay = ({ params = { year: '', month: '', day: '' } }: Props) => {
   const [isSelected, setIsSelected] = useState<number>(1);
   const [countRoutines, setCountRoutines] = useState<number>(1);
   const [countTargets, setCountTargets] = useState<number>(1);
-  const [day, setDay] = useState<string>(params.day);
-  const [month, setMonth] = useState<string>(params.month);
-  const [year] = useState<string>(params.year);
+  const [day, setDay] = useState<string>(params.day || '01');
+  const [month, setMonth] = useState<string>(params.month || '01');
+  const [year] = useState<string>(params.year || '2000');
   
   useEffect(() => {
-    if (params.day.length === 1) setDay(`0${params.day}`);
-    if (params.month.length === 1) setMonth(`0${params.month}`);
-  }, [isSelected]);
+    if (day.length === 1) setDay(`0${day}`);
+    if (month.length === 1) setMonth(`0${month}`);
+  }, [isSelected, day, month]);
 
   const addCount = () => {
     if (isSelected === 1) setCountRoutines(countRoutines + 1);
