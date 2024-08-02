@@ -17,3 +17,4 @@
 - [React Hook Form](https://react-hook-form.com/)
 - [React Icons](https://react-icons.github.io/react-icons/)
 - [Axios](https://axios-http.com/docs/intro)
+- [Time Range Picker](https://www.npmjs.com/package/@wojtekmaj/react-timerange-picker)

@@ -6,10 +6,11 @@ export const authSlice: StateCreator<
   [["zustand/immer", never]],
   [],
   IUser
-> = (set) => ({
+> = (set, get) => ({
   username: "",
   email: "",
   isAuth: false,
+  dashboard: [],
   setUsername: (username: string) => set({ username }),
   setEmail: (email: string) => set({ email }),
   setIsAuth: (isAuth: boolean) => set({ isAuth }),
@@ -20,5 +21,6 @@ export const authSlice: StateCreator<
       isAuth: false,
     }),
     localStorage.removeItem("token");
-  }
+  },
+  setDashboard: (dashboard) => set({ dashboard })
 });
